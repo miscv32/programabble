@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwod8e4f52eu"]
+
+[ext_resource type="Shader" uid="uid://bi6ahvdc2ie2o" path="res://shaders/scrolling_bg.gdshader" id="1_nxogm"]
+[ext_resource type="Texture2D" uid="uid://dqbct1iui83k6" path="res://assets/bgtextures/PNG/Default/pattern_07.png" id="2_nxogm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u3cyc"]
+shader = ExtResource("1_nxogm")
+shader_parameter/tiling = Vector2(3, 3)
+shader_parameter/offset = Vector2(0.3, 0.3)
+shader_parameter/light_color = Color(1.540184e-06, 0.588129, 0.8865913, 1)
+shader_parameter/dark_color = Color(0.10700611, 0.38768518, 0.60927844, 1)
+
+[node name="Scene" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_u3cyc")
+position = Vector2(594, 375)
+texture = ExtResource("2_nxogm")
+region_enabled = true
+region_rect = Rect2(-17, 0, 1200, 750)
