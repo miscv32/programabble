@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwod8e4f52eu"]
+[gd_scene load_steps=9 format=3 uid="uid://cwod8e4f52eu"]
 
 [ext_resource type="Shader" uid="uid://bi6ahvdc2ie2o" path="res://shaders/scrolling_bg.gdshader" id="1_nxogm"]
 [ext_resource type="Texture2D" uid="uid://dqbct1iui83k6" path="res://assets/bgtextures/PNG/Default/pattern_07.png" id="2_nxogm"]
 [ext_resource type="PackedScene" uid="uid://c7ys6ljhvqiri" path="res://logo.tscn" id="3_3253y"]
+[ext_resource type="Texture2D" uid="uid://bx3by0rx7tsd8" path="res://assets/img/blocks/block long.png" id="4_y2354"]
+[ext_resource type="Script" uid="uid://cwq8ggb8r5g72" path="res://play_button.gd" id="5_ni31j"]
+[ext_resource type="FontFile" uid="uid://cuqsunhqu8waa" path="res://assets/fonts/Doodly_Dialect.ttf" id="6_xlvrw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u3cyc"]
 shader = ExtResource("1_nxogm")
@@ -11,16 +14,43 @@ shader_parameter/offset = Vector2(0.3, 0.3)
 shader_parameter/light_color = Color(1.540184e-06, 0.588129, 0.8865913, 1)
 shader_parameter/dark_color = Color(0.10700611, 0.38768518, 0.60927844, 1)
 
-[node name="Scene" type="Node2D"]
+[sub_resource type="LabelSettings" id="LabelSettings_73fnb"]
+font = ExtResource("6_xlvrw")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="StartScreen" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_u3cyc")
-position = Vector2(598, 373)
+position = Vector2(592, 359)
 texture = ExtResource("2_nxogm")
 region_enabled = true
 region_rect = Rect2(-17, 0, 1200, 750)
 
 [node name="Logo" parent="." instance=ExtResource("3_3253y")]
-position = Vector2(639, 260)
+position = Vector2(600, 191)
 scale = Vector2(1.5, 1.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(609, 404.00003)
+scale = Vector2(1.875, 1.875)
+texture = ExtResource("4_y2354")
+
+[node name="Play button" type="Button" parent="."]
+offset_left = 489.0
+offset_top = 344.0
+offset_right = 729.0
+offset_bottom = 464.0
+script = ExtResource("5_ni31j")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 535.0
+offset_top = 368.0
+offset_right = 683.0
+offset_bottom = 440.0
+text = "play!"
+label_settings = SubResource("LabelSettings_73fnb")
