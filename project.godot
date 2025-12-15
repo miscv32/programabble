@@ -14,3 +14,7 @@ config/name="programabble"
 run/main_scene="uid://cwod8e4f52eu"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="viewport"

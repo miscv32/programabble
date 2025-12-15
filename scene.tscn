@@ -14,6 +14,7 @@ shader_parameter/dark_color = Color(0.10700611, 0.38768518, 0.60927844, 1)
 [node name="Scene" type="Node2D"]
 
 [node name="Background" type="Sprite2D" parent="."]
+z_index = -100
 texture_repeat = 2
 material = SubResource("ShaderMaterial_u3cyc")
 position = Vector2(598, 373)
@@ -22,5 +23,11 @@ region_enabled = true
 region_rect = Rect2(-17, 0, 1200, 750)
 
 [node name="Logo" parent="." instance=ExtResource("3_3253y")]
-position = Vector2(639, 260)
+z_index = 10
+position = Vector2(587, 224)
+scale = Vector2(1.5, 1.5)
+
+[node name="Shadow" parent="." instance=ExtResource("3_3253y")]
+modulate = Color(0, 0, 0, 0.5647059)
+position = Vector2(602, 241)
 scale = Vector2(1.5, 1.5)
