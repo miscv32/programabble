@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://orag47ygmgcj"]
+
+[ext_resource type="Texture2D" uid="uid://dkcmkckkpimbg" path="res://assets/img/board/doubleWord.png" id="1_enwwp"]
+[ext_resource type="FontFile" uid="uid://cuqsunhqu8waa" path="res://assets/fonts/Doodly_Dialect.ttf" id="2_pjp0j"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hq5tk"]
+font = ExtResource("2_pjp0j")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[node name="Double Letter Board Tile" type="Node2D"]
+z_index = 5
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_enwwp")
+
+[node name="Text" type="Label" parent="."]
+z_index = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -28.0
+offset_top = -23.0
+offset_right = 57.714287
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.7, 0.7)
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 0.0
+text = "DW"
+label_settings = SubResource("LabelSettings_hq5tk")
+horizontal_alignment = 1
+autowrap_mode = 3

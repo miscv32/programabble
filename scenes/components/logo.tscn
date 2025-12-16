@@ -1,0 +1,142 @@
+[gd_scene load_steps=10 format=3 uid="uid://c7ys6ljhvqiri"]
+
+[ext_resource type="Texture2D" uid="uid://bks3bkojti8cf" path="res://assets/img/blocks/block P.png" id="1_7ojkr"]
+[ext_resource type="Texture2D" uid="uid://dyurt2a5ljw6w" path="res://assets/img/blocks/block R.png" id="2_km3ge"]
+[ext_resource type="Texture2D" uid="uid://bjgav2icbahb0" path="res://assets/img/blocks/block O.png" id="3_13gaw"]
+[ext_resource type="Texture2D" uid="uid://cv17xurdxq8qm" path="res://assets/img/blocks/block G.png" id="4_m1qkf"]
+[ext_resource type="Texture2D" uid="uid://dvgkk66vgw6cv" path="res://assets/img/blocks/block A.png" id="5_qwjy2"]
+[ext_resource type="Texture2D" uid="uid://b325uohb8xfag" path="res://assets/img/blocks/block M.png" id="6_ydiq5"]
+[ext_resource type="Texture2D" uid="uid://bg7w4k4j20p11" path="res://assets/img/blocks/block B.png" id="7_81q0v"]
+[ext_resource type="Texture2D" uid="uid://dk1epvhkuevyb" path="res://assets/img/blocks/block L.png" id="8_41yq4"]
+[ext_resource type="Texture2D" uid="uid://xc35ir4cxutv" path="res://assets/img/blocks/block E.png" id="9_6cx1e"]
+
+[node name="Logo" type="Node2D"]
+
+[node name="LogoTiles" type="Node2D" parent="."]
+
+[node name="P" type="Sprite2D" parent="LogoTiles"]
+position = Vector2(-299.00165, 4)
+rotation = 0.064577185
+texture = ExtResource("1_7ojkr")
+
+[node name="R" type="Sprite2D" parent="LogoTiles"]
+position = Vector2(-245.0017, 11.999992)
+rotation = -0.061086528
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("2_km3ge")
+
+[node name="R2" type="Sprite2D" parent="LogoTiles"]
+position = Vector2(-81.00166, -4)
+texture = ExtResource("2_km3ge")
+
+[node name="O" type="Sprite2D" parent="LogoTiles"]
+position = Vector2(-191.0017, 16.999992)
+rotation = 0.061086528
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("3_13gaw")
+
+[node name="G" type="Sprite2D" parent="LogoTiles"]
+position = Vector2(-136.0017, 6.9999924)
+rotation = -0.061086528
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("4_m1qkf")
+
+[node name="A" type="Sprite2D" parent="LogoTiles"]
+position = Vector2(-26.001663, 1)
+texture = ExtResource("5_qwjy2")
+
+[node name="A2" type="Sprite2D" parent="LogoTiles"]
+position = Vector2(82.99834, 13)
+rotation = 0.122173056
+texture = ExtResource("5_qwjy2")
+
+[node name="M" type="Sprite2D" parent="LogoTiles"]
+position = Vector2(28.998306, 5.9999924)
+rotation = -0.061086528
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("6_ydiq5")
+
+[node name="B" type="Sprite2D" parent="LogoTiles"]
+position = Vector2(138.99834, 3)
+texture = ExtResource("7_81q0v")
+
+[node name="B2" type="Sprite2D" parent="LogoTiles"]
+position = Vector2(194.9983, -1.0000076)
+rotation = -0.061086528
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("7_81q0v")
+
+[node name="L" type="Sprite2D" parent="LogoTiles"]
+position = Vector2(250.99834, 4)
+rotation = 0.18325958
+texture = ExtResource("8_41yq4")
+
+[node name="E" type="Sprite2D" parent="LogoTiles"]
+position = Vector2(305.99835, 2)
+texture = ExtResource("9_6cx1e")
+
+[node name="Shadow" type="Node2D" parent="."]
+modulate = Color(0, 0, 0, 0.6156863)
+z_index = -20
+position = Vector2(15, 15)
+
+[node name="P" type="Sprite2D" parent="Shadow"]
+position = Vector2(-299.00165, 4)
+rotation = 0.064577185
+texture = ExtResource("1_7ojkr")
+
+[node name="R" type="Sprite2D" parent="Shadow"]
+position = Vector2(-245.0017, 11.999992)
+rotation = -0.061086528
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("2_km3ge")
+
+[node name="R2" type="Sprite2D" parent="Shadow"]
+position = Vector2(-81.00166, -4)
+texture = ExtResource("2_km3ge")
+
+[node name="O" type="Sprite2D" parent="Shadow"]
+position = Vector2(-191.0017, 16.999992)
+rotation = 0.061086528
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("3_13gaw")
+
+[node name="G" type="Sprite2D" parent="Shadow"]
+position = Vector2(-136.0017, 6.9999924)
+rotation = -0.061086528
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("4_m1qkf")
+
+[node name="A" type="Sprite2D" parent="Shadow"]
+position = Vector2(-26.001663, 1)
+texture = ExtResource("5_qwjy2")
+
+[node name="A2" type="Sprite2D" parent="Shadow"]
+position = Vector2(82.99834, 13)
+rotation = 0.122173056
+texture = ExtResource("5_qwjy2")
+
+[node name="M" type="Sprite2D" parent="Shadow"]
+position = Vector2(28.998306, 5.9999924)
+rotation = -0.061086528
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("6_ydiq5")
+
+[node name="B" type="Sprite2D" parent="Shadow"]
+position = Vector2(138.99834, 3)
+texture = ExtResource("7_81q0v")
+
+[node name="B2" type="Sprite2D" parent="Shadow"]
+position = Vector2(194.9983, -1.0000076)
+rotation = -0.061086528
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("7_81q0v")
+
+[node name="L" type="Sprite2D" parent="Shadow"]
+position = Vector2(250.99834, 4)
+rotation = 0.18325958
+texture = ExtResource("8_41yq4")
+
+[node name="E" type="Sprite2D" parent="Shadow"]
+position = Vector2(305.99835, 2)
+texture = ExtResource("9_6cx1e")

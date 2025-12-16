@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://4ce7abbw4mwk"]
+
+[ext_resource type="Script" uid="uid://cdsbuxfvfaloh" path="res://scripts/tile.gd" id="1_vx4y2"]
+[ext_resource type="Texture2D" uid="uid://citanbanx6mst" path="res://assets/img/blocks/block.png" id="2_a2t34"]
+[ext_resource type="FontFile" uid="uid://cuqsunhqu8waa" path="res://assets/fonts/Doodly_Dialect.ttf" id="3_xupwe"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_w2xbl"]
+font = ExtResource("3_xupwe")
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tfor0"]
+size = Vector2(64, 64)
+
+[node name="Tile" type="Area2D"]
+z_index = 10
+script = ExtResource("1_vx4y2")
+
+[node name="BlockBg" type="Sprite2D" parent="."]
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_a2t34")
+
+[node name="Label" type="Label" parent="BlockBg"]
+z_index = 4
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -68.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.8, 0.8)
+size_flags_horizontal = 4
+size_flags_stretch_ratio = 0.0
+text = "A"
+label_settings = SubResource("LabelSettings_w2xbl")
+horizontal_alignment = 1
+
+[node name="Shadow" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(0, 0, 0, 0.56078434)
+show_behind_parent = true
+scale = Vector2(1.1, 1.1)
+texture = ExtResource("2_a2t34")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("RectangleShape2D_tfor0")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://s0e6f5sdqlkk"
-path="res://.godot/imported/grid.png-1819ec4ccea55c37f9c62b7dd67479af.ctex"
+uid="uid://ckrjy7eylpwna"
+path="res://.godot/imported/doubleLetter.png-d29352ec7314cd981e6abd2eea13fc79.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/fonts/grid.png"
-dest_files=["res://.godot/imported/grid.png-1819ec4ccea55c37f9c62b7dd67479af.ctex"]
+source_file="res://assets/img/board/doubleLetter.png"
+dest_files=["res://.godot/imported/doubleLetter.png-d29352ec7314cd981e6abd2eea13fc79.ctex"]
 
 [params]
 
