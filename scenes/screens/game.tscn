@@ -9,7 +9,7 @@
 [node name="Background" parent="." instance=ExtResource("1_fc0e3")]
 
 [node name="Board" parent="." instance=ExtResource("5_7jktm")]
-position = Vector2(386, 39)
+position = Vector2(325, 55)
 
 [node name="Tile" parent="." instance=ExtResource("5_ln6eb")]
 position = Vector2(175, 83)
