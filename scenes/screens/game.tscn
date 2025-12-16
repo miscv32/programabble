@@ -9,11 +9,15 @@
 [node name="Background" parent="." instance=ExtResource("1_fc0e3")]
 
 [node name="Board" parent="." instance=ExtResource("5_7jktm")]
-position = Vector2(324, 63)
+position = Vector2(386, 39)
 
 [node name="Tile" parent="." instance=ExtResource("5_ln6eb")]
 position = Vector2(175, 83)
 letter_text = "swap"
+
+[node name="Tile10" parent="." instance=ExtResource("5_ln6eb")]
+position = Vector2(108, 78)
+letter_text = "take"
 
 [node name="Tile4" parent="." instance=ExtResource("5_ln6eb")]
 position = Vector2(176, 154)
@@ -31,13 +35,29 @@ position = Vector2(178, 366)
 letter_text = "B"
 
 [node name="Tile5" parent="." instance=ExtResource("5_ln6eb")]
-position = Vector2(300, 431)
+position = Vector2(181, 438)
 letter_text = "3"
 
 [node name="Tile6" parent="." instance=ExtResource("5_ln6eb")]
-position = Vector2(500, 431)
+position = Vector2(180, 506)
 letter_text = "2"
 
 [node name="Tile7" parent="." instance=ExtResource("5_ln6eb")]
-position = Vector2(500, 500)
+position = Vector2(182, 575)
 letter_text = "x2"
+
+[node name="Tile9" parent="." instance=ExtResource("5_ln6eb")]
+position = Vector2(252, 659)
+letter_text = "else"
+
+[node name="Tile11" parent="." instance=ExtResource("5_ln6eb")]
+position = Vector2(92, 525)
+letter_text = "if"
+
+[node name="Tile12" parent="." instance=ExtResource("5_ln6eb")]
+position = Vector2(28, 615)
+letter_text = "at"
+
+[node name="Tile13" parent="." instance=ExtResource("5_ln6eb")]
+position = Vector2(93, 143)
+letter_text = "holds"

@@ -10,9 +10,10 @@ var dragging = false
 	set(value):
 		letter_text = value
 		# This ensures the label exists before we try to change it
-		var label = get_node_or_null("BlockBg/Label") 
-		label.text = value
-		rescale_text()
+		var label = get_node_or_null("BlockBg/Label")
+		if label:
+			label.text = value
+			rescale_text()
 
 func _input_event(_viewport, event, _shape_idx):
 	# Detect Mouse Down
@@ -56,18 +57,15 @@ func snap_to_grid():
 		global_position = board.to_global(cell_center_local)
 		
 func rescale_text():
-	var label = get_node_or_null("BlockBg/Label") 
-	var max_width = 50 # The width of your wooden tile (minus some padding)
-	
-	# Reset scale first
-	label.scale = Vector2(1, 1)
-	label.pivot_offset = label.size / 2
-	
-	# Check if the label is too wide
-	if label.size.x > max_width:
-		var new_scale = max_width / label.size.x
-		label.scale = Vector2(new_scale, new_scale)
+	var label = get_node_or_null("BlockBg/Label")
+	if label:
+		var max_width = 50 # The width of your wooden tile (minus some padding)
 		
-	# Re-center the label after scaling
-	#label.pivot_offset = label.size / 2
-	#label.position = Vector2.ZERO # Assuming your Area2D root is at 0,0
+		# Reset scale first
+		label.scale = Vector2(1, 1)
+		label.pivot_offset = label.size / 2
+		
+		# Check if the label is too wide
+		if label.size.x > max_width:
+			var new_scale = max_width / label.size.x
+			label.scale = Vector2(new_scale, new_scale)

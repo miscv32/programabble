@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwod8e4f52eu"]
+[gd_scene load_steps=4 format=3 uid="uid://cwod8e4f52eu"]
 
 [ext_resource type="PackedScene" uid="uid://c7ys6ljhvqiri" path="res://scenes/components/logo.tscn" id="1_4qg20"]
-[ext_resource type="Texture2D" uid="uid://bx3by0rx7tsd8" path="res://assets/img/blocks/block long.png" id="2_u0h6s"]
 [ext_resource type="Script" uid="uid://cwq8ggb8r5g72" path="res://scripts/play_button.gd" id="3_7n3k6"]
 [ext_resource type="PackedScene" uid="uid://dey4xkd5f25up" path="res://scenes/components/background.tscn" id="4_8q7jh"]
 
@@ -12,17 +11,12 @@ z_index = 10
 position = Vector2(587, 224)
 scale = Vector2(1.5, 1.5)
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(609, 404.00003)
-scale = Vector2(1.875, 1.875)
-texture = ExtResource("2_u0h6s")
-
 [node name="Play button" type="Button" parent="."]
 offset_left = 489.0
 offset_top = 344.0
 offset_right = 729.0
 offset_bottom = 464.0
+text = "Play"
 script = ExtResource("3_7n3k6")
 
 [node name="Background" parent="." instance=ExtResource("4_8q7jh")]
