@@ -22,25 +22,33 @@ var top_left = Vector2i(0,0)
 
 func _input_event(_viewport, event, _shape_idx):
 	# Detect Mouse Down
-	if (selectable == false): return
-	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		
-		if event.pressed:
-			prevPos = global_position
-			dragging = true
-			z_index += 20
-			visual.position -= Vector2(10, 10)
-			# Makes sure that no more tiles below get dragged
-			shadow.visible = true
-		else:
-			if (dragging == false): return
-			dragging = false
-			shadow.visible = false
-			z_index -= 20
-			visual.position += Vector2(10, 10)
-			if (not snap_to_grid()):
-				global_position = prevPos
+	
+	if event is InputEventMouseButton:
+		if (selectable == false): return
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				prevPos = global_position
+				dragging = true
+				z_index += 20
+				visual.position -= Vector2(10, 10)
+				# Makes sure that no more tiles below get dragged
+				shadow.visible = true
+			else:
+				if (dragging == false): return
+				dragging = false
+				shadow.visible = false
+				z_index -= 20
+				visual.position += Vector2(10, 10)
+				if (not snap_to_grid()):
+					global_position = prevPos
+		if event.button_index == MOUSE_BUTTON_RIGHT and not event.pressed:
+			print("waow")
+			var board = get_tree().root.find_child("Board", true, false)
+			var mouse_pos = get_global_mouse_position()
+			board.remove(board.get_grid_coords(mouse_pos))
+			global_position = originalPos
 		get_viewport().set_input_as_handled()
+	
 
 func _ready():
 	prevPos = global_position 
@@ -74,6 +82,8 @@ func snap_to_grid():
 		
 		return true
 	return false
+func remove_from_grid():
+	pass
 		
 func rescale_text():
 	var label = get_node_or_null("BlockBg/Label")
