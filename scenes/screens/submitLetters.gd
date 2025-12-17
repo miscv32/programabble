@@ -10,21 +10,38 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
+func _values(arr):
+	var res = []
+	for x in arr:
+		if x != null:
+			res.append(x)
+	return res
+	
+func _keys(arr):
+	var board = get_tree().root.find_child("Board", true, false)
+	var res = []
+	for i in range(arr.size()):
+		if arr[i] != null:
+			res.append(board._index_to_pos(i))
+	return res
 func _button_pressed():
 	var board = get_tree().root.find_child("Board", true, false)
 	if board:
-		var tiles = board.boardBuffer.values()
+		var tiles = _values(board.board_buffer)
 		var newWords = board.get_all_new_words()
 		
 		# Check if the tiles form a line
 		if (not _checkLine(tiles, newWords)):
+			print("Tiles do not form a line")
 			print ("Invalid")
 			return
 			
 		# Check if the word is attatched to some other word 
-		var existing = board.permBoard.values()
-		var newPositions = board.boardBuffer.keys()
+		var existing = _values(board.perm_board)
+		var newPositions = _keys(board.board_buffer)
 		if not (_checkCombining(existing, newWords) or Vector2i(4, 4) in newPositions):
+			print(board.board_buffer)
+			print("Word is not attached to some other word")
 			print ("Invalid")
 			return
 		
@@ -32,8 +49,11 @@ func _button_pressed():
 			
 		# make sure the grammar is valid
 		var parser = get_tree().root.find_child("Parser", true, false)
+		print("newWords is ", newWords)
 		for word in newWords:
+			print("Word is ", word)
 			if (not parser.parse(word)):
+				print("Parser could not parse this word")
 				print ("Invalid")
 				return
 		
