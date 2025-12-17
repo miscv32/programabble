@@ -6,6 +6,7 @@ extends Area2D
 @onready var label = $Label
 
 var dragging = false
+var selectable = true
 var prevPos
 
 @export var letter_text: String = "A":
@@ -19,6 +20,7 @@ var prevPos
 
 func _input_event(_viewport, event, _shape_idx):
 	# Detect Mouse Down
+	if (selectable == false): return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		
 		if event.pressed:
@@ -35,7 +37,7 @@ func _input_event(_viewport, event, _shape_idx):
 			z_index -= 20
 			visual.position += Vector2(10, 10)
 			if (not snap_to_grid()):
-				position = prevPos
+				global_position = prevPos
 		get_viewport().set_input_as_handled()
 
 func _ready():
