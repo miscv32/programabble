@@ -13,11 +13,22 @@ func _process(delta: float) -> void:
 func _button_pressed():
 	var board = get_tree().root.find_child("Board", true, false)
 	if board:
-		var tiles = board.boardBuffer.keys()
-		if (not board.validateLine()):
-			print ("Incorrect")
-			return
+		var tiles = board.boardBuffer.values()
 		var newWords = board.get_all_new_words()
+		var allNewLetterWord = false
+		for word in newWords:
+			var wordGood = true
+			for tile in tiles:
+				if (word.has(tile) == false):
+					wordGood = false
+					break
+			if wordGood:
+				allNewLetterWord = true
+				break
+		
+		if (not allNewLetterWord):
+			print ("Invalid")
+			return
 		for word in newWords:
 			for tile in word:
 				print (tile.letter_text)

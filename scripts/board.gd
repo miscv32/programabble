@@ -32,46 +32,6 @@ func isValidGridPos(gridPos, requesting_tile):
 	# Bounds check
 	return 0 <= gridPos.x and gridPos.x <= 8 and 0 <= gridPos.y and gridPos.y <= 8
 	
-func validateLine() -> bool:
-	var positions = boardBuffer.keys()
-	
-	# A line must have at least 2 points to define a direction
-	if positions.size() < 2:
-		return false
-
-	var first = positions[0]
-	var is_horizontal = true
-	var is_vertical = true
-	
-	# 1. Check Alignment
-	for p in positions:
-		if p.y != first.y:
-			is_horizontal = false
-		if p.x != first.x:
-			is_vertical = false
-			
-	# If not aligned on either axis, it's not a straight line
-	if not is_horizontal and not is_vertical:
-		return false
-		
-	# 2. Check Continuity (No gaps)
-	var coords = []
-	if is_horizontal:
-		for p in positions:
-			coords.append(p.x)
-	else:
-		for p in positions:
-			coords.append(p.y)
-			
-	coords.sort()
-	
-	# Every coordinate must be exactly 1 unit away from the previous
-	for i in range(coords.size() - 1):
-		if coords[i+1] != coords[i] + 1:
-			return false
-			
-	return true
-	
 func flushBoardBuffer():
 	for gridPos in boardBuffer.keys():
 		var tile = boardBuffer[gridPos]
@@ -100,7 +60,7 @@ func get_all_new_words() -> Array:
 			var word = _get_word_at_pos(pos, axis, full_board)
 			
 			# Create a unique signature based on tile positions to avoid duplicates
-			if word.size() > 2:
+			if word.size() >= 2:
 				var signature = _get_word_signature(word)
 				if not signature in detected_word_signatures:
 					detected_word_signatures.append(signature)
