@@ -15,22 +15,42 @@ func _button_pressed():
 	if board:
 		var tiles = board.boardBuffer.values()
 		var newWords = board.get_all_new_words()
-		var allNewLetterWord = false
-		for word in newWords:
-			var wordGood = true
-			for tile in tiles:
-				if (word.has(tile) == false):
-					wordGood = false
-					break
-			if wordGood:
-				allNewLetterWord = true
-				break
 		
-		if (not allNewLetterWord):
+		# Check if the tiles form a line
+		if (not _checkLine(tiles, newWords)):
 			print ("Invalid")
 			return
+			
+		# Check if the word is attatched to some other word 
+		var existing = board.permBoard.values()
+		var newPositions = board.boardBuffer.keys()
+		if not (_checkCombining(existing, newWords) or Vector2i(4, 4) in newPositions):
+			print ("Invalid")
+			return
+		
+			
+			
 		for word in newWords:
 			for tile in word:
 				print (tile.letter_text)
 			print ("")
 		board.flushBoardBuffer()
+		
+func _checkLine(tiles, newWords):
+	var allNewLetterWord = false
+	for word in newWords:
+		var wordGood = true
+		for tile in tiles:
+			if (word.has(tile) == false):
+				wordGood = false
+				break
+		if wordGood:
+			allNewLetterWord = true
+			break
+	return allNewLetterWord
+	
+func _checkCombining(existing, newWords):
+	for word in newWords:
+		for tile in existing:
+			if word.has(tile): return true
+	return false
