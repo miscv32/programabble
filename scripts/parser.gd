@@ -67,6 +67,8 @@ func statement(tokens):
 		return swap(tokens)
 	if shift(tokens.duplicate()):
 		return shift(tokens)
+	if take(tokens.duplicate()):
+		return shift(tokens)
 	return repeat(tokens)
 	
 func repeat(tokens):
@@ -76,6 +78,16 @@ func repeat(tokens):
 	if (tile.letter_text != "x2"):
 		return false
 	if not statement(tokens): return false
+	return true
+	
+func take(tokens):
+	var tile
+	if (tokens.size() <= 0): return false
+	tile = tokens.pop_front()
+	if (tile.letter_text != "take"):
+		return false
+	if not col(tokens): return false
+	if not row(tokens): return false
 	return true
 	
 func parse(tokens):

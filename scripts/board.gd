@@ -28,7 +28,7 @@ func get_slot_center(grid_pos: Vector2i):
 	return tile_map.to_global(local_center)
 
 func _pos_to_index(gridPos):
-	return gridPos.y*BOARD_W_H + gridPos.x
+	return gridPos.x*BOARD_W_H + gridPos.y
 
 func _has(arr, gridPos):
 	return arr[_pos_to_index(gridPos)] != null

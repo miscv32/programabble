@@ -8,6 +8,8 @@ extends Area2D
 var dragging = false
 var selectable = true
 var prevPos
+var originalPos
+var top_left = Vector2i(0,0)
 
 @export var letter_text: String = "A":
 	set(value):
@@ -42,6 +44,7 @@ func _input_event(_viewport, event, _shape_idx):
 
 func _ready():
 	prevPos = global_position 
+	originalPos = global_position
 	rescale_text()
 
 func _process(_delta):
@@ -65,9 +68,9 @@ func snap_to_grid():
 		global_position = global_center
 		
 		var prev_grid_pos = board.get_grid_coords(prevPos)
-		board.remove(prev_grid_pos)
+		board.remove(prev_grid_pos - top_left)
 		prevPos = global_position
-		board.place(grid_pos, self)
+		board.place(grid_pos - top_left, self)
 		
 		return true
 	return false

@@ -34,15 +34,18 @@ func _button_pressed():
 		if (not _checkLine(tiles, newWords)):
 			print("Tiles do not form a line")
 			print ("Invalid")
+			_reset_tiles(tiles)
 			return
 			
 		# Check if the word is attatched to some other word 
 		var existing = _values(board.perm_board)
 		var newPositions = _keys(board.board_buffer)
 		if not (_checkCombining(existing, newWords) or Vector2i(4, 4) in newPositions):
+
 			print(board.board_buffer)
 			print("Word is not attached to some other word")
 			print ("Invalid")
+			_reset_tiles(tiles)
 			return
 		
 			
@@ -55,6 +58,7 @@ func _button_pressed():
 			if (not parser.parse(word)):
 				print("Parser could not parse this word")
 				print ("Invalid")
+				_reset_tiles(tiles)
 				return
 		
 		board.flushBoardBuffer()
@@ -71,6 +75,10 @@ func _checkLine(tiles, newWords):
 			allNewLetterWord = true
 			break
 	return allNewLetterWord
+	
+func _reset_tiles(tiles):
+	for tile in tiles:
+		tile.global_position = tile.originalPos
 	
 func _checkCombining(existing, newWords):
 	for word in newWords:
