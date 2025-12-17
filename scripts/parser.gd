@@ -27,9 +27,10 @@ func col(tokens):
 		"D": return true
 		"E": return true
 		"F": return true
+		"G": return true
 		"H": return true
 		"I": return true
-		"J": return true
+		
 		_: return false
 		
 func line(tokens):

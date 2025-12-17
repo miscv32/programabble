@@ -79,6 +79,10 @@ func _checkLine(tiles, newWords):
 func _reset_tiles(tiles):
 	for tile in tiles:
 		tile.global_position = tile.originalPos
+	var board = get_tree().root.find_child("Board", true, false)
+	if board:
+		board.boardBuffer = {}
+	
 	
 func _checkCombining(existing, newWords):
 	for word in newWords:
