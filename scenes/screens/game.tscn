@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://denn6v11lu3r3"]
+[gd_scene load_steps=6 format=3 uid="uid://denn6v11lu3r3"]
 
 [ext_resource type="PackedScene" uid="uid://dey4xkd5f25up" path="res://scenes/components/background.tscn" id="1_fc0e3"]
 [ext_resource type="Script" uid="uid://y8cxqwpoeely" path="res://scenes/screens/submitLetters.gd" id="4_o78e0"]
+[ext_resource type="Script" uid="uid://bb7s3kgmwkvdq" path="res://scripts/parser.gd" id="5_4ji0l"]
 [ext_resource type="PackedScene" uid="uid://brrw5ioyllgfc" path="res://scenes/components/board.tscn" id="5_7jktm"]
 [ext_resource type="PackedScene" uid="uid://4ce7abbw4mwk" path="res://scenes/components/tile.tscn" id="5_ln6eb"]
 
@@ -66,3 +67,6 @@ offset_bottom = 65.0
 text = "Submit Letters
 "
 script = ExtResource("4_o78e0")
+
+[node name="Parser" type="Node2D" parent="."]
+script = ExtResource("5_4ji0l")

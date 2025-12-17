@@ -30,10 +30,13 @@ func _button_pressed():
 		
 			
 			
+		# make sure the grammar is valid
+		var parser = get_tree().root.find_child("Parser", true, false)
 		for word in newWords:
-			for tile in word:
-				print (tile.letter_text)
-			print ("")
+			if (not parser.parse(word)):
+				print ("Invalid")
+				return
+		
 		board.flushBoardBuffer()
 		
 func _checkLine(tiles, newWords):
