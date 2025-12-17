@@ -81,7 +81,7 @@ func _reset_tiles(tiles):
 		tile.global_position = tile.originalPos
 	var board = get_tree().root.find_child("Board", true, false)
 	if board:
-		board.boardBuffer = {}
+		board.board_buffer.fill(null)
 	
 	
 func _checkCombining(existing, newWords):

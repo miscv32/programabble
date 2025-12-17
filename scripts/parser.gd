@@ -69,7 +69,7 @@ func statement(tokens):
 	if shift(tokens.duplicate()):
 		return shift(tokens)
 	if take(tokens.duplicate()):
-		return shift(tokens)
+		return take(tokens)
 	return repeat(tokens)
 	
 func repeat(tokens):
