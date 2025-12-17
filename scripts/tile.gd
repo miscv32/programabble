@@ -8,6 +8,7 @@ extends Area2D
 var dragging = false
 var selectable = true
 var prevPos
+var originalPos
 
 @export var letter_text: String = "A":
 	set(value):
@@ -42,6 +43,7 @@ func _input_event(_viewport, event, _shape_idx):
 
 func _ready():
 	prevPos = global_position 
+	originalPos = global_position
 	rescale_text()
 
 func _process(_delta):

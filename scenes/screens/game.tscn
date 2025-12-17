@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://y8cxqwpoeely" path="res://scenes/screens/submitLetters.gd" id="4_o78e0"]
 [ext_resource type="Script" uid="uid://bb7s3kgmwkvdq" path="res://scripts/parser.gd" id="5_4ji0l"]
 [ext_resource type="PackedScene" uid="uid://brrw5ioyllgfc" path="res://scenes/components/board.tscn" id="5_7jktm"]
-[ext_resource type="PackedScene" uid="uid://4ce7abbw4mwk" path="res://scenes/components/tile.tscn" id="5_ln6eb"]
+[ext_resource type="Script" uid="uid://cdif0r5d33u02" path="res://scripts/new_letters.gd" id="5_ln6eb"]
 
 [node name="Game" type="Node2D"]
 
@@ -13,53 +13,7 @@
 [node name="Board" parent="." instance=ExtResource("5_7jktm")]
 position = Vector2(561, 59)
 
-[node name="Tiles" type="Node2D" parent="."]
-position = Vector2(561, 59)
-
-[node name="Tile" parent="Tiles" instance=ExtResource("5_ln6eb")]
-position = Vector2(-283, 231)
-letter_text = "swap"
-
-[node name="Tile10" parent="Tiles" instance=ExtResource("5_ln6eb")]
-position = Vector2(-489, 158)
-letter_text = "take"
-
-[node name="Tile4" parent="Tiles" instance=ExtResource("5_ln6eb")]
-position = Vector2(-385, 95)
-letter_text = "with"
-
-[node name="Tile8" parent="Tiles" instance=ExtResource("5_ln6eb")]
-position = Vector2(-385, 160)
-letter_text = "shift"
-
-[node name="Tile2" parent="Tiles" instance=ExtResource("5_ln6eb")]
-position = Vector2(-385, 232)
-
-[node name="Tile3" parent="Tiles" instance=ExtResource("5_ln6eb")]
-position = Vector2(-383, 307)
-letter_text = "B"
-
-[node name="Tile5" parent="Tiles" instance=ExtResource("5_ln6eb")]
-position = Vector2(-380, 379)
-letter_text = "3"
-
-[node name="Tile6" parent="Tiles" instance=ExtResource("5_ln6eb")]
-position = Vector2(-381, 447)
-letter_text = "2"
-
-[node name="Tile7" parent="Tiles" instance=ExtResource("5_ln6eb")]
-position = Vector2(-379, 516)
-letter_text = "x2"
-
-[node name="Tile11" parent="Tiles" instance=ExtResource("5_ln6eb")]
-position = Vector2(-469, 466)
-letter_text = "if"
-
-[node name="Tile13" parent="Tiles" instance=ExtResource("5_ln6eb")]
-position = Vector2(-468, 84)
-letter_text = "holds"
-
-[node name="Button" type="Button" parent="."]
+[node name="Submit" type="Button" parent="."]
 offset_left = 102.0
 offset_top = 34.0
 offset_right = 224.0
@@ -70,3 +24,11 @@ script = ExtResource("4_o78e0")
 
 [node name="Parser" type="Node2D" parent="."]
 script = ExtResource("5_4ji0l")
+
+[node name="New Letters" type="Button" parent="."]
+offset_left = 116.0
+offset_top = 100.0
+offset_right = 218.0
+offset_bottom = 131.0
+text = "New Letters"
+script = ExtResource("5_ln6eb")
