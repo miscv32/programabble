@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://y8cxqwpoeely" path="res://scenes/screens/submitLetters.gd" id="4_o78e0"]
 [ext_resource type="Script" uid="uid://bb7s3kgmwkvdq" path="res://scripts/parser.gd" id="5_4ji0l"]
 [ext_resource type="PackedScene" uid="uid://brrw5ioyllgfc" path="res://scenes/components/board.tscn" id="5_7jktm"]
-[ext_resource type="Script" path="res://scripts/new_letters.gd" id="5_ln6eb"]
+[ext_resource type="Script" uid="uid://cdif0r5d33u02" path="res://scripts/new_letters.gd" id="5_ln6eb"]
 
 [node name="Game" type="Node2D"]
 
