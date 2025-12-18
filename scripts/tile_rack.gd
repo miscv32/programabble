@@ -70,7 +70,7 @@ func _ready() -> void:
 		tokens.append("G")
 		tokens.append("H")
 		tokens.append("I")
-		tokens.append("J")
+		tokens.append("E")
 		
 	rack.resize(9)
 	refill_rack()

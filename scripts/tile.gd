@@ -74,8 +74,10 @@ func snap_to_grid():
 		
 		global_position = global_center
 		
-		var prev_grid_pos = board.get_grid_coords(prevPos)
-		board.remove(prev_grid_pos)
+		
+		if prevPos != originalPos:
+			var prev_grid_pos = board.get_grid_coords(prevPos)
+			board.remove(prev_grid_pos)
 		prevPos = global_position
 		board.place(grid_pos, self)
 		
