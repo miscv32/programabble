@@ -42,7 +42,6 @@ func _input_event(_viewport, event, _shape_idx):
 				if (not snap_to_grid()):
 					global_position = prevPos
 		if event.button_index == MOUSE_BUTTON_RIGHT and not event.pressed:
-			print("waow")
 			var board = get_tree().root.find_child("Board", true, false)
 			var mouse_pos = get_global_mouse_position()
 			board.remove(board.get_grid_coords(mouse_pos))

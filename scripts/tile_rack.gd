@@ -39,17 +39,17 @@ func remove_tile(t):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	for i in range(8):
+	for i in range(9):
 		tokens.append("shift")
 		tokens.append("take")
-		tokens.append("x2")
-		tokens.append("then")
-		tokens.append("with")
-	for i in range(4):
+	for i in range(6):
 		tokens.append("replace")
 		tokens.append("swap")
+		tokens.append("then")
+		tokens.append("with")
+		tokens.append("x2")
 		
-	for i in range(2):
+	for i in range(3):
 		tokens.append("1")
 		tokens.append("2")
 		tokens.append("3")

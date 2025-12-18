@@ -76,7 +76,6 @@ func get_all_new_words() -> Array:
 			# Check both axes for every new tile
 			for axis in ["horizontal", "vertical"]:
 				var word = _get_word_at_pos(_index_to_pos(index), axis, full_board)
-				print("Word at index ", index, " is ", word)
 				# Create a unique signature based on tile positions to avoid duplicates
 				if word.size() >= 2:
 					var signature = _get_word_signature(word)
@@ -104,7 +103,12 @@ func _get_word_at_pos(start_pos: Vector2i, axis: String, full_board: Array) -> A
 		word_positions.append(check_pos)
 		check_pos += direction
 	
-	word_positions.sort() # Ensure they are in reading order (increasing axis)
+	# For a Horizontal word, sort by X. For Vertical, sort by Y.
+	word_positions.sort_custom(
+		func(a, b):
+			if axis == "horizontal": return a.x < b.x
+			else: return a.y < b.y
+	)
 	return word_positions
 
 func _get_word_signature(pos_array: Array) -> String:

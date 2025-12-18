@@ -38,6 +38,11 @@ func line(tokens):
 		return col(tokens)
 	return row(tokens)
 	
+func tile(tokens):
+	if (tokens.size() <= 0): return false
+	var tile = tokens.pop_front()
+	return true
+	
 func swap(tokens):
 	var tile
 	if (tokens.size() <= 0): return false
@@ -66,6 +71,8 @@ func shift(tokens):
 func statement(tokens):
 	if swap(tokens.duplicate()):
 		return swap(tokens)
+	if replace(tokens.duplicate()):
+		return replace(tokens)
 	if shift(tokens.duplicate()):
 		return shift(tokens)
 	if take(tokens.duplicate()):
@@ -91,12 +98,41 @@ func take(tokens):
 	if not row(tokens): return false
 	return true
 	
-func parse(tokens):
-	var o = statement(tokens)
-	if (tokens.size() == 0 and o):
-		return true
-	else:
+func replace(tokens):
+	var tile
+	if (tokens.size() <= 0): return false
+	tile = tokens.pop_front()
+	if (tile.letter_text != "replace"):
 		return false
+	if not col(tokens): return false
+	if not row(tokens): return false
+	if (tokens.size() <= 0): return false
+	tile = tokens.pop_front()
+	if (tile.letter_text != "with"):
+		return false
+	if not tile(tokens): return false
+	return true
+	
+func parse(tokens):
+	# Cheat for then to avoid manipulating grammar
+	var splitStatements = []
+	var currentStatement = []
+	var parsedStatement
+	for token in tokens:
+		if token.letter_text == "then":
+			parsedStatement = statement(currentStatement)
+			if not parsedStatement: return false
+			splitStatements.append(parsedStatement)
+			if (currentStatement.size() > 0): return false
+			currentStatement = []
+			continue
+		currentStatement.append(token)
+	parsedStatement = statement(currentStatement)
+	if not parsedStatement: return false
+	splitStatements.append(parsedStatement)
+	if (currentStatement.size() > 0): return false
+	return true
+		
 	
 		
 	
