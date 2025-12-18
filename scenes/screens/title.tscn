@@ -8,15 +8,17 @@
 
 [node name="Logo" parent="." instance=ExtResource("1_4qg20")]
 z_index = 10
-position = Vector2(587, 224)
-scale = Vector2(1.5, 1.5)
+position = Vector2(-4, -225)
+scale = Vector2(1.2, 1.2)
 
 [node name="Play button" type="Button" parent="."]
-offset_left = 489.0
-offset_top = 344.0
-offset_right = 729.0
-offset_bottom = 464.0
+offset_left = -131.0
+offset_top = -38.0
+offset_right = 109.0
+offset_bottom = 82.0
 text = "Play"
 script = ExtResource("3_7n3k6")
 
 [node name="Background" parent="." instance=ExtResource("4_8q7jh")]
+
+[node name="Camera2D" type="Camera2D" parent="."]

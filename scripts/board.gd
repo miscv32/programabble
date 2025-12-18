@@ -50,7 +50,7 @@ func flushBoardBuffer():
 		if board_buffer[index] != null:
 			var tile = board_buffer[index]
 			tile.selectable = false
-			tile.visual.self_modulate = Color(.5,.5,.5, 1)
+			tile.visual.modulate = Color(0.90, 0.90, 0.94)
 			board_buffer[index] = null
 			perm_board[index] = tile
 		

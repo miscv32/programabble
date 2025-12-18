@@ -2,9 +2,11 @@
 
 ROW -> 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 COL -> a | b | c | d | e | f | g | h | i
+TILE -> anything
 LINE -> ROW | COL
 SWAP -> swap COL ROW with COL ROW
+REPLACE -> replace COL ROW with TILE
 SHIFT -> shift LINE
 REPEAT -> x2 STATEMENT
 TAKE -> take COL ROW
-STATEMENT -> SWAP | SHIFT | REPEAT | TAKE
+STATEMENT -> SWAP | SHIFT | REPEAT | TAKE | REPLACE

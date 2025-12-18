@@ -44,7 +44,6 @@ func _button_pressed():
 
 			print(board.board_buffer)
 			print("Word is not attached to some other word")
-			print ("Invalid")
 			_reset_tiles(tiles)
 			return
 		
@@ -52,16 +51,20 @@ func _button_pressed():
 			
 		# make sure the grammar is valid
 		var parser = get_tree().root.find_child("Parser", true, false)
-		print("newWords is ", newWords)
+		#print("newWords is ", newWords)
 		for word in newWords:
-			print("Word is ", word)
 			if (not parser.parse(word)):
 				print("Parser could not parse this word")
-				print ("Invalid")
 				_reset_tiles(tiles)
 				return
 		
 		board.flushBoardBuffer()
+		
+		var tileRack = get_tree().root.find_child("TileRack", true, false)
+		if tileRack:
+			for tile in tiles:
+				tileRack.remove_tile(tile)
+			tileRack.refill_rack()
 		
 func _checkLine(tiles, newWords):
 	var allNewLetterWord = false
@@ -77,11 +80,9 @@ func _checkLine(tiles, newWords):
 	return allNewLetterWord
 	
 func _reset_tiles(tiles):
-	for tile in tiles:
-		tile.global_position = tile.originalPos
-	var board = get_tree().root.find_child("Board", true, false)
-	if board:
-		board.board_buffer.fill(null)
+	var tileRack = get_tree().root.find_child("TileRack", true, false)
+	if tileRack:
+		tileRack.reset_tiles()
 	
 	
 func _checkCombining(existing, newWords):
