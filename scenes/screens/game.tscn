@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://denn6v11lu3r3"]
+[gd_scene load_steps=9 format=3 uid="uid://denn6v11lu3r3"]
 
 [ext_resource type="PackedScene" uid="uid://dey4xkd5f25up" path="res://scenes/components/background.tscn" id="1_fc0e3"]
 [ext_resource type="Script" uid="uid://dq4nytd2f6g7b" path="res://scripts/clear_buffer.gd" id="4_4ji0l"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://bb7s3kgmwkvdq" path="res://scripts/parser.gd" id="5_4ji0l"]
 [ext_resource type="PackedScene" uid="uid://brrw5ioyllgfc" path="res://scenes/components/board.tscn" id="5_7jktm"]
 [ext_resource type="PackedScene" uid="uid://ddbtsbnfxkha2" path="res://scenes/components/tile_rack.tscn" id="7_0q6jn"]
+[ext_resource type="Script" uid="uid://cpvwykn83tn68" path="res://scenes/screens/drawCommand.gd" id="7_kauht"]
+[ext_resource type="Script" uid="uid://7rhtjlqa7cpm" path="res://scenes/screens/draw_index.gd" id="8_kauht"]
 
 [node name="Game" type="Node2D"]
 
@@ -39,3 +41,21 @@ script = ExtResource("5_4ji0l")
 
 [node name="TileRack" parent="." instance=ExtResource("7_0q6jn")]
 position = Vector2(-127, 282)
+
+[node name="DrawCommand" type="Button" parent="."]
+offset_left = -405.0
+offset_top = -14.0
+offset_right = -271.0
+offset_bottom = 17.0
+text = "Draw Command
+"
+script = ExtResource("7_kauht")
+
+[node name="DrawIndex" type="Button" parent="."]
+offset_left = -410.0
+offset_top = 60.0
+offset_right = -276.0
+offset_bottom = 91.0
+text = "Draw Index
+"
+script = ExtResource("8_kauht")

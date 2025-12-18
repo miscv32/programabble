@@ -1,7 +1,8 @@
 extends Node2D
 
 var tile_scene := preload("res://scenes/components/tile.tscn")
-var tokens = []
+var commands = []
+var indexes = []
 
 var rack = []
 
@@ -14,63 +15,85 @@ func reset_tiles():
 			board.remove(board.get_grid_coords(tile.global_position))
 			tile.global_position = tile.originalPos
 			
-		
-func refill_rack():
-	var t
-	var text_index
-	for i in range(rack.size()):
-		if rack[i] == null:
-			t = tile_scene.instantiate()
-			t.position.x += 64 * i + 32
-			t.position.y = 32
-			text_index = randi() % tokens.size()
-			t.letter_text = tokens[text_index]
-			tokens.remove_at(text_index)
-			add_child(t)
-			rack[i] = t
+			
+func draw_command():
+	if (rack.size() >= 9):
+		print ("Full")
+		return
+	var t = tile_scene.instantiate()
+	t.position.x += 64 * rack.size() + 32
+	t.position.y = 32
+	var text_index = randi() % commands.size()
+	t.letter_text = commands[text_index]
+	commands.remove_at(text_index)
+	add_child(t)
+	rack.append(t)
+	
+func draw_index():
+	if (rack.size() > 9):
+		print ("Full")
+		return
+	var t = tile_scene.instantiate()
+	t.position.x += 64 * rack.size() + 32
+	t.position.y = 32
+	var text_index = randi() % indexes.size()
+	t.letter_text = indexes[text_index]
+	indexes.remove_at(text_index)
+	add_child(t)
+	rack.append(t)
+	
 			
 func remove_tile(t):
-	for i in range(rack.size()):
-		if rack[i] == t:
-			rack[i] = null
+	rack.erase(t)
+	_move_positions()
 			
-		
-
+func _move_positions():
+	var t
+	var move
+	var updatePrev
+	for i in range(rack.size()):
+		t = rack[i]
+		move = t.global_position == t.originalPos
+		updatePrev = t.prevPos == t.originalPos
+		t.originalPos.x = 64 * i + 32
+		t.originalPos.y = 32
+		t.originalPos = to_global(t.originalPos)
+		if move: 
+			t.global_position = t.originalPos
+		if updatePrev: 
+			t.prevPos = t.originalPos
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for i in range(9):
-		tokens.append("shift")
-		tokens.append("take")
+		commands.append("shift")
+		commands.append("take")
 	for i in range(3):
-		tokens.append("replace")
-		tokens.append("swap")
+		commands.append("replace")
+		commands.append("swap")
 		
 	for i in range(6):
-		tokens.append("with")
-		tokens.append("then")
-		tokens.append("x2")
+		commands.append("with")
+		commands.append("then")
+		commands.append("x2")
 		
 		
 	for i in range(3):
-		tokens.append("1")
-		tokens.append("2")
-		tokens.append("3")
-		tokens.append("4")
-		tokens.append("5")
-		tokens.append("6")
-		tokens.append("7")
-		tokens.append("8")
-		tokens.append("9")
-		tokens.append("A")
-		tokens.append("B")
-		tokens.append("C")
-		tokens.append("D")
-		tokens.append("F")
-		tokens.append("G")
-		tokens.append("H")
-		tokens.append("I")
-		tokens.append("E")
-		
-	rack.resize(9)
-	refill_rack()
+		indexes.append("1")
+		indexes.append("2")
+		indexes.append("3")
+		indexes.append("4")
+		indexes.append("5")
+		indexes.append("6")
+		indexes.append("7")
+		indexes.append("8")
+		indexes.append("9")
+		indexes.append("A")
+		indexes.append("B")
+		indexes.append("C")
+		indexes.append("D")
+		indexes.append("F")
+		indexes.append("G")
+		indexes.append("H")
+		indexes.append("I")
+		indexes.append("E")

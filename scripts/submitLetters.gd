@@ -64,7 +64,6 @@ func _button_pressed():
 		if tileRack:
 			for tile in tiles:
 				tileRack.remove_tile(tile)
-			tileRack.refill_rack()
 		
 func _checkLine(tiles, newWords):
 	var allNewLetterWord = false
