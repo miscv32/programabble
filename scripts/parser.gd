@@ -91,7 +91,7 @@ func statement(tokens):
 		return shift(tokens)
 	if take(tokens.duplicate()) != null:
 		return take(tokens)
-	if repeat(tokens) != null:
+	if repeat(tokens.duplicate()) != null:
 		return repeat(tokens)
 	return null
 	

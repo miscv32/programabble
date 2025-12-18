@@ -48,7 +48,6 @@ func _button_pressed():
 			return
 		
 			
-			
 		# make sure the grammar is valid
 		var parser = get_tree().root.find_child("Parser", true, false)
 		#print("newWords is ", newWords)
@@ -60,9 +59,12 @@ func _button_pressed():
 				
 				_reset_tiles(tiles)
 				return
-			p.execute()
+			
 		
 		board.flushBoardBuffer()
+		for word in newWords:
+			var p = parser.parse(word)
+			p.execute(board)
 		
 		var tileRack = get_tree().root.find_child("TileRack", true, false)
 		if tileRack:

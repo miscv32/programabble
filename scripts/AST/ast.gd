@@ -2,7 +2,7 @@ class_name AST
 
 
 class ASTNode extends RefCounted:
-	func execute():
+	func execute(board):
 		pass
 
 class ShiftRow extends ASTNode:
@@ -11,7 +11,8 @@ class ShiftRow extends ASTNode:
 	func _init(_row):
 		row = _row
 		
-	func execute():
+	func execute(board):
+		board.shiftRow(row)
 		print ("Shift row")
 		
 class ShiftCol extends ASTNode:
@@ -20,7 +21,8 @@ class ShiftCol extends ASTNode:
 	func _init(_col):
 		col = _col
 		
-	func execute():
+	func execute(board):
+		board.shiftCol(col)
 		print ("Shift column")
 		
 class Swap extends ASTNode:
@@ -31,7 +33,8 @@ class Swap extends ASTNode:
 		posBefore = _before
 		posAfter = _after
 		
-	func execute():
+	func execute(board):
+		board.swap(posBefore, posAfter)
 		print ("Swaparoo")
 		
 class Take extends ASTNode:
@@ -40,7 +43,8 @@ class Take extends ASTNode:
 	func _init(_pos):
 		pos = _pos
 		
-	func execute():
+	func execute(board):
+		board.deleteAt(pos)
 		print ("Take")
 		
 class Replace extends ASTNode:
@@ -51,7 +55,7 @@ class Replace extends ASTNode:
 		pos = _pos
 		tile = _tile
 		
-	func execute():
+	func execute(board):
 		print ("Replace")
 		
 class RepTwo extends ASTNode:
@@ -60,9 +64,9 @@ class RepTwo extends ASTNode:
 	func _init(_stmt):
 		stmt = _stmt
 		
-	func execute():
-		stmt.execute()
-		stmt.execute()
+	func execute(board):
+		stmt.execute(board)
+		stmt.execute(board)
 		
 class Then extends ASTNode:
 	var stmt1
@@ -72,6 +76,6 @@ class Then extends ASTNode:
 		stmt1 = _stmt1
 		stmt2 = _stmt2
 		
-	func execute():
-		stmt1.execute()
-		stmt2.execute()
+	func execute(board):
+		stmt1.execute(board)
+		stmt2.execute(board)

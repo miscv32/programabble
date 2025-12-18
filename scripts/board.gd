@@ -124,3 +124,57 @@ func _convert_to_tile_refs(pos_array: Array, full_board: Array) -> Array:
 		if full_board[_pos_to_index(p)] != null: # not sure that we should need this but fixes bug?
 			tile_refs.append(full_board[_pos_to_index(p)])
 	return tile_refs
+	
+func setPositions():
+	for i in range(perm_board.size()):
+		if perm_board[i] == null:
+			continue
+		var pos = _index_to_pos(i)
+		var loc = get_slot_center(pos)
+		perm_board[i].global_position = loc
+		
+		
+	
+func deleteAt(pos):
+	# This is meant to be a temporary solution
+	var t = board_buffer[_pos_to_index(pos)]
+	if t == null: return
+	remove(pos)
+	
+	t.global_position += Vector2(1000, 1000)
+	
+func swap(pos1, pos2):
+	var i1 = _pos_to_index(pos1)
+	var i2 = _pos_to_index(pos2)
+	var temp = perm_board[i1]
+	perm_board[i1] = perm_board[i2]
+	perm_board[i2] = temp
+	setPositions()
+	
+func shiftRow(r):
+	var prev = null
+	var index
+	for i in range(9):
+		index = Vector2i(i, r)
+		index = _pos_to_index(index)
+		var temp = prev
+		prev = perm_board[index]
+		perm_board[index] = temp
+	index = Vector2i(0, r)
+	index = _pos_to_index(index)
+	perm_board[index] = prev
+	setPositions()
+	
+func shiftCol(c):
+	var prev = null
+	var index
+	for i in range(9):
+		index = Vector2i(c, i)
+		index = _pos_to_index(index)
+		var temp = prev
+		prev = perm_board[index]
+		perm_board[index] = temp
+	index = Vector2i(c, 0)
+	index = _pos_to_index(index)
+	perm_board[index] = prev
+	setPositions()

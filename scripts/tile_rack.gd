@@ -30,7 +30,7 @@ func draw_command():
 	rack.append(t)
 	
 func draw_index():
-	if (rack.size() > 9):
+	if (rack.size() >= 9):
 		print ("Full")
 		return
 	var t = tile_scene.instantiate()
@@ -65,20 +65,20 @@ func _move_positions():
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	for i in range(9):
+	for i in range(10):
 		commands.append("shift")
 		commands.append("take")
-	for i in range(3):
+	for i in range(4):
 		commands.append("replace")
 		commands.append("swap")
 		
-	for i in range(6):
+	for i in range(4):
 		commands.append("with")
 		commands.append("then")
 		commands.append("x2")
 		
 		
-	for i in range(3):
+	for i in range(2):
 		indexes.append("1")
 		indexes.append("2")
 		indexes.append("3")
