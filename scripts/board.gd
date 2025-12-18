@@ -16,14 +16,10 @@ func _ready():
 func get_grid_coords(pixel_pos: Vector2):
 	var local_pos = tile_map.to_local(pixel_pos)
 	var map_pos = tile_map.local_to_map(local_pos)
-	#map_pos.y *= -1
-	#map_pos.y += 8
 	return map_pos
 
 # Converts grid to pixel center
 func get_slot_center(grid_pos: Vector2i):
-	#grid_pos.y -= 8
-	#grid_pos.y *= -1
 	var local_center = tile_map.map_to_local(grid_pos)
 	return tile_map.to_global(local_center)
 
@@ -31,19 +27,23 @@ func _pos_to_index(gridPos):
 	return gridPos.x*BOARD_W_H + gridPos.y
 
 func _has(arr, gridPos):
+	if not (0 <= gridPos.x and gridPos.x <= 8 and 0 <= gridPos.y and gridPos.y <= 8):
+		return false
 	return arr[_pos_to_index(gridPos)] != null
 
 func place(gridPos, tile_ref): # Pass 'self' from the tile
 	board_buffer[_pos_to_index(gridPos)] = tile_ref
 		
 func isValidGridPos(gridPos, requesting_tile):
+	if not ( 0 <= gridPos.x and gridPos.x <= 8 and 0 <= gridPos.y and gridPos.y <= 8): return false
+	
 	# Check if someone ELSE is in this spot
 	if _has(board_buffer, gridPos) and board_buffer[_pos_to_index(gridPos)] != requesting_tile: 
 		return false
 	if _has(perm_board, gridPos):
 		return false
 	# Bounds check
-	return 0 <= gridPos.x and gridPos.x <= 8 and 0 <= gridPos.y and gridPos.y <= 8
+	return true
 	
 func flushBoardBuffer():
 	for index in range(board_buffer.size()):

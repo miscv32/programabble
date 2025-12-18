@@ -12,7 +12,7 @@
 [node name="Background" parent="." instance=ExtResource("1_fc0e3")]
 
 [node name="Board" parent="." instance=ExtResource("5_7jktm")]
-position = Vector2(-131, -306)
+position = Vector2(-121, -340)
 
 [node name="Submit" type="Button" parent="."]
 offset_left = -415.0
@@ -38,4 +38,4 @@ script = ExtResource("5_4ji0l")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="TileRack" parent="." instance=ExtResource("7_0q6jn")]
-position = Vector2(-128, 301)
+position = Vector2(-127, 282)

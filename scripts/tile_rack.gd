@@ -42,12 +42,15 @@ func _ready() -> void:
 	for i in range(9):
 		tokens.append("shift")
 		tokens.append("take")
-	for i in range(6):
+	for i in range(3):
 		tokens.append("replace")
 		tokens.append("swap")
-		tokens.append("then")
+		
+	for i in range(6):
 		tokens.append("with")
+		tokens.append("then")
 		tokens.append("x2")
+		
 		
 	for i in range(3):
 		tokens.append("1")
