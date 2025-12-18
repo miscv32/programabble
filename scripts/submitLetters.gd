@@ -53,10 +53,14 @@ func _button_pressed():
 		var parser = get_tree().root.find_child("Parser", true, false)
 		#print("newWords is ", newWords)
 		for word in newWords:
-			if (not parser.parse(word)):
+			var p = parser.parse(word)
+
+			if (p == null):
 				print("Parser could not parse this word")
+				
 				_reset_tiles(tiles)
 				return
+			p.execute()
 		
 		board.flushBoardBuffer()
 		
