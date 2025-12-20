@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://denn6v11lu3r3"]
+[gd_scene load_steps=14 format=3 uid="uid://denn6v11lu3r3"]
 
 [ext_resource type="PackedScene" uid="uid://dey4xkd5f25up" path="res://scenes/components/background.tscn" id="1_fc0e3"]
+[ext_resource type="Texture2D" uid="uid://dqivca4l8nri3" path="res://assets/kenney_ui-pack/PNG/Extra/Default/icon_repeat_light.png" id="3_vsgdc"]
 [ext_resource type="Script" uid="uid://dq4nytd2f6g7b" path="res://scripts/clear_buffer.gd" id="4_4ji0l"]
 [ext_resource type="Script" uid="uid://y8cxqwpoeely" path="res://scripts/submitLetters.gd" id="4_o78e0"]
 [ext_resource type="Script" uid="uid://bb7s3kgmwkvdq" path="res://scripts/parser.gd" id="5_4ji0l"]
@@ -8,6 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://ddbtsbnfxkha2" path="res://scenes/components/tile_rack.tscn" id="7_0q6jn"]
 [ext_resource type="Script" uid="uid://cpvwykn83tn68" path="res://scenes/screens/drawCommand.gd" id="7_kauht"]
 [ext_resource type="Script" uid="uid://7rhtjlqa7cpm" path="res://scenes/screens/draw_index.gd" id="8_kauht"]
+[ext_resource type="Texture2D" uid="uid://dgfbgitnlg8lk" path="res://assets/kenney_ui-pack/PNG/Green/Default/button_rectangle_depth_flat.png" id="9_yruvw"]
+[ext_resource type="FontFile" uid="uid://cuqsunhqu8waa" path="res://assets/fonts/Doodly_Dialect.ttf" id="11_e0wmo"]
+[ext_resource type="Texture2D" uid="uid://dx2dpt587rrrd" path="res://assets/kenney_ui-pack/PNG/Green/Default/button_square_depth_flat.png" id="12_xrk1x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_oni8f"]
+font = ExtResource("11_e0wmo")
+font_size = 17
 
 [node name="Game" type="Node2D"]
 
@@ -16,46 +24,106 @@
 [node name="Board" parent="." instance=ExtResource("5_7jktm")]
 position = Vector2(-121, -340)
 
-[node name="Submit" type="Button" parent="."]
-offset_left = -415.0
-offset_top = -234.0
-offset_right = -293.0
-offset_bottom = -203.0
-text = "Submit Letters
-"
-script = ExtResource("4_o78e0")
-
-[node name="Clear buffer" type="Button" parent="."]
-offset_left = -414.0
-offset_top = -116.0
-offset_right = -292.0
-offset_bottom = -85.0
-text = "Clear buffer
-"
-script = ExtResource("4_4ji0l")
-
 [node name="Parser" type="Node2D" parent="."]
 script = ExtResource("5_4ji0l")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="TileRack" parent="." instance=ExtResource("7_0q6jn")]
-position = Vector2(-127, 282)
+position = Vector2(-120, 267)
 
-[node name="DrawCommand" type="Button" parent="."]
-offset_left = -405.0
-offset_top = -14.0
-offset_right = -271.0
-offset_bottom = 17.0
-text = "Draw Command
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+offset_left = -463.0
+offset_top = -233.0
+offset_right = -184.0
+offset_bottom = 263.0
+mouse_filter = 2
+color = Color(0.60784316, 0.6784314, 0.7176471, 1)
+
+[node name="Submit" type="TextureButton" parent="ColorRect"]
+layout_mode = 0
+offset_left = 92.99997
+offset_top = 324.0
+offset_right = 284.99997
+offset_bottom = 395.0
+scale = Vector2(0.7, 1.2)
+texture_normal = ExtResource("9_yruvw")
+script = ExtResource("4_o78e0")
+
+[node name="Label" type="Label" parent="ColorRect/Submit"]
+layout_mode = 0
+offset_left = 20.00002
+offset_top = 14.166666
+offset_right = 136.00002
+offset_bottom = 105.166664
+scale = Vector2(1.5, 1)
+text = "Submit
 "
+label_settings = SubResource("LabelSettings_oni8f")
+
+[node name="Draw Command" type="TextureButton" parent="ColorRect"]
+layout_mode = 0
+offset_left = 41.0
+offset_top = 157.0
+offset_right = 105.0
+offset_bottom = 221.0
+scale = Vector2(1.2, 1.2)
+texture_normal = ExtResource("12_xrk1x")
 script = ExtResource("7_kauht")
 
-[node name="DrawIndex" type="Button" parent="."]
-offset_left = -410.0
-offset_top = 60.0
-offset_right = -276.0
-offset_bottom = 91.0
-text = "Draw Index
-"
+[node name="Label2" type="Label" parent="ColorRect/Draw Command"]
+layout_mode = 0
+offset_left = 4.1666565
+offset_top = 12.500002
+offset_right = 67.16666
+offset_bottom = 62.5
+text = "Cmd"
+label_settings = SubResource("LabelSettings_oni8f")
+
+[node name="Draw Index" type="TextureButton" parent="ColorRect"]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 156.0
+offset_right = 223.0
+offset_bottom = 220.0
+scale = Vector2(1.2, 1.2)
+texture_normal = ExtResource("12_xrk1x")
 script = ExtResource("8_kauht")
+
+[node name="Label2" type="Label" parent="ColorRect/Draw Index"]
+layout_mode = 0
+offset_left = 4.1666565
+offset_top = 12.500002
+offset_right = 67.16666
+offset_bottom = 62.5
+text = "Idx"
+label_settings = SubResource("LabelSettings_oni8f")
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 75.0
+offset_right = 156.0
+offset_bottom = 114.0
+scale = Vector2(1.5, 1.5)
+text = "Draw:"
+label_settings = SubResource("LabelSettings_oni8f")
+
+[node name="Clear buffer" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 337.0
+offset_right = 84.0
+offset_bottom = 381.0
+icon = ExtResource("3_vsgdc")
+flat = true
+script = ExtResource("4_4ji0l")
+
+[node name="ColorRect" type="ColorRect" parent="ColorRect"]
+z_index = -1
+layout_mode = 0
+offset_right = 289.0
+offset_bottom = 506.0
+mouse_filter = 2
+color = Color(0.24705882, 0.24705882, 0.45490196, 1)

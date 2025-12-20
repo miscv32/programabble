@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddbtsbnfxkha2"]
+[gd_scene load_steps=3 format=3 uid="uid://ddbtsbnfxkha2"]
 
 [ext_resource type="Script" uid="uid://bdobb5qup06p3" path="res://scripts/tile_rack.gd" id="1_edfce"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_edfce"]
+load_path = "res://.godot/imported/tilerack.png-aa8e8335d7b5425e3d509436cdb27ca3.ctex"
+
 [node name="TileRack" type="Node2D"]
 script = ExtResource("1_edfce")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-33, 5)
+texture = SubResource("CompressedTexture2D_edfce")
+centered = false
